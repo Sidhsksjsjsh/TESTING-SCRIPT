@@ -9,11 +9,12 @@ screenGui.Parent = gui
 screenGui.Name = "EMOTEPLAYER"
 screenGui.ResetOnSpawn = false
 
-local frame = Instance.new("Frame")
+--[[local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 200, 0, 20)
 frame.Position = UDim2.new(0.5, -100, 0.9, 0)
 frame.BackgroundColor3 = Color3.new(0, 0, 0)
 frame.Parent = screenGui
+]]
 
 local ID1 = Instance.new("TextBox")
 ID1.Size = UDim2.new(0, 150, 0, 20)
@@ -46,12 +47,13 @@ playButton.Text = "Play"
 playButton.Parent = screenGui
 
 local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://0"
 
 playButton.MouseButton1Click:Connect(function()
 local track = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
 if playButton.Text == "Play" then
       Anim.AnimationId = "rbxassetid://" .. tostring(ID1.Text)
-      track:Play(ID2.Text,ID3.Text,ID4.Text)
+      track:Play(tonumber(ID2.Text),tonumber(ID3.Text),tonumber(ID4.Text))
       playButton.Text = "Stop"
 elseif playButton.Text == "Stop" then
       track:Stop()
